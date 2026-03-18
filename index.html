@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Southampton Weekend Floor Crew</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .field {
+      margin-bottom: 18px;
+    }
+    .radio-group {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400;
+    }
+    .radio-option input {
+      width: auto;
+    }
+    button {
+      background: black;
+      color: white;
+      border: 0;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .success, .error {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      display: none;
+    }
+    .success {
+      background: #e8f7e8;
+      color: #166534;
+    }
+    .error {
+      background: #fdecec;
+      color: #991b1b;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Southampton Weekend Floor Crew</h1>
+
+      <h3>Who we are</h3>
+      <p>We are running a Southampton pilot for a short notice shift system that connects local workers with nearby venues when they need extra support during busy periods.</p>
+      <p>The work is simple floor support in busy bars, including collecting glasses, clearing tables and keeping areas tidy.</p>
+      <p>Shifts are a minimum of two hours and paid at least minimum wage, with venues often offering higher pay for urgent support.</p>
+      <p>All shifts are paid directly by the venue at the end of the shift and will always be located within a maximum 20 minute walk from your postcode.</p>
+
+      <h3>How the trial works</h3>
+      <ul>
+        <li>The pilot will be on Zoom from 8pm to 11pm while at home or nearby. Your microphone and camera do not need to be on.</li>
+        <li>You can be doing your own thing, but you must stay logged in, responsive and ready to leave if you accept a shift.</li>
+        <li>You are always free to accept or ignore shift requests.</li>
+        <li>You must be dressed in standard black bar shift clothing and ready to leave your home immediately if you accept a shift.</li>
+      </ul>
+
+      <h3>How shifts are assigned</h3>
+      <p>When a venue requests support, a message will be posted in the Zoom chat. The first person to reply “YES - READY” gets the shift.</p>
+
+      <h3>Prize draw</h3>
+      <p>All registrations will be entered into a £50 cash draw.</p>
+      <p>Crew members who attend the full trial evenings will be entered into an additional £100 prize draw.</p>
+
+      <p><strong>We need a certain number of registrations to start the pilot. You will receive the pilot date and Zoom invite by email.</strong></p>
+    </div>
+
+    <form id="applicationForm" class="card">
+      <div class="field">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" required />
+      </div>
+
+      <div class="field">
+        <label for="phone">Mobile Number (WhatsApp required)</label>
+        <input id="phone" name="phone" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address (must match your Zoom email)</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+
+      <div class="field">
+        <label for="age_group">Age</label>
+        <select id="age_group" name="age_group" required>
+          <option value="">Select age group</option>
+          <option value="18-20">18-20</option>
+          <option value="21-24">21-24</option>
+          <option value="25+">25+</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Do you own appropriate black clothing for bar shifts?</label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="has_black_clothing" value="true" required /> Yes</label>
+          <label class="radio-option"><input type="radio" name="has_black_clothing" value="false" required /> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Are you physically able to be on your feet for 2-3 hours?</label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="physically_able" value="true" required /> Yes</label>
+          <label class="radio-option"><input type="radio" name="physically_able" value="false" required /> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Are you confident speaking and understanding English in a fast paced environment?</label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="speaks_english" value="true" required /> Yes</label>
+          <label class="radio-option"><input type="radio" name="speaks_english" value="false" required /> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>I understand this is a Zoom based trial with the possibility of being selected for 2-3 hours of paid, light bar work, per trial evening.</label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="understands_trial" value="true" required /> I understand</label>
+          <label class="radio-option"><input type="radio" name="understands_trial" value="false" required /> I do not understand</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>I understand and agree that if I accept a shift, I am representing Crew Dispatch and must be polite and reliable.</label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="agrees_work_standard" value="true" required /> I understand and agree</label>
+          <label class="radio-option"><input type="radio" name="agrees_work_standard" value="false" required /> I do not agree</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="reliability_notes">Briefly describe any previous work experience and why you'd be reliable for short-notice shifts.</label>
+        <textarea id="reliability_notes" name="reliability_notes" required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="area">Which area do you currently live in?</label>
+        <select id="area" name="area" required>
+          <option value="">Select area</option>
+          <option value="City Centre West">City Centre West (Bedford Place area)</option>
+          <option value="City Centre East">City Centre East (Ocean Village area)</option>
+          <option value="Portswood / Highfield / Southampton Uni">Portswood / Highfield / Southampton Uni</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="postcode_sector">Postcode sector</label>
+        <select id="postcode_sector" name="postcode_sector" required>
+          <option value="">Select postcode sector</option>
+          <option value="SO15 1">SO15 1</option>
+          <option value="SO15 2">SO15 2</option>
+          <option value="SO15 3">SO15 3</option>
+          <option value="SO14 0">SO14 0</option>
+          <option value="SO14 1">SO14 1</option>
+          <option value="SO14 2">SO14 2</option>
+          <option value="SO14 3">SO14 3</option>
+          <option value="SO17 1">SO17 1</option>
+          <option value="SO17 2">SO17 2</option>
+          <option value="SO17 3">SO17 3</option>
+          <option value="SO17 4">SO17 4</option>
+          <option value="SO17 5">SO17 5</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="postcode_last3">Enter the last 3 characters of your postcode</label>
+        <input id="postcode_last3" name="postcode_last3" maxlength="3" required />
+      </div>
+
+      <button type="submit" id="submitBtn">Submit application</button>
+
+      <div id="successMessage" class="success">
+        Thank you. Your application has been submitted.
+      </div>
+
+      <div id="errorMessage" class="error">
+        Something went wrong. Please try again.
+      </div>
+    </form>
+  </div>
+
+  <script>
+const SUPABASE_URL = "https://hweytbyrqvjsviydmacv.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Qt-BL3-Qyb1cEBJ1ScDYSw_kNdxfYXs";
+
+    const form = document.getElementById("applicationForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const successMessage = document.getElementById("successMessage");
+    const errorMessage = document.getElementById("errorMessage");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      successMessage.style.display = "none";
+      errorMessage.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
+      const formData = new FormData(form);
+
+      const payload = {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        age_group: formData.get("age_group"),
+        has_black_clothing: formData.get("has_black_clothing") === "true",
+        physically_able: formData.get("physically_able") === "true",
+        speaks_english: formData.get("speaks_english") === "true",
+        understands_trial: formData.get("understands_trial") === "true",
+        agrees_work_standard: formData.get("agrees_work_standard") === "true",
+        reliability_notes: formData.get("reliability_notes"),
+        area: formData.get("area"),
+        postcode_sector: formData.get("postcode_sector"),
+        postcode_last3: formData.get("postcode_last3").toUpperCase()
+      };
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/applications`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to submit");
+        }
+
+        form.reset();
+        successMessage.style.display = "block";
+      } catch (error) {
+        errorMessage.style.display = "block";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit application";
+      }
+    });
+  </script>
+</body>
+</html>
