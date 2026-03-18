@@ -484,7 +484,11 @@
                     body: JSON.stringify(payload)
                 });
 
-                if (!res.ok) throw new Error('Network error');
+                if (!res.ok) {
+    const errorText = await res.text();
+    console.error("Supabase error:", errorText);
+    throw new Error(errorText);
+}
 
                 // Success
                 feedback.innerHTML = `
