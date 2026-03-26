@@ -5,520 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Southampton Weekend Floor Crew</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Inter', system-ui, sans-serif;
+            background: #f5f5f4;
+            color: #18181b;
         }
+
+        .glass-card {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+        }
+
         .form-input {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
         }
+
         .form-input:focus {
+            outline: none;
             border-color: #000;
-            box-shadow: 0 0 0 4px rgb(0 0 0 / 0.08);
+            box-shadow: 0 0 0 4px rgba(0,0,0,0.08);
         }
-        .radio-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .submit-btn {
+            transition: all 0.2s ease;
         }
-        .radio-card:hover {
-            border-color: #000;
-            background-color: #fafafa;
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
         }
-        .radio-card input:checked + span {
-            font-weight: 600;
-        }
-        .postcode-section {
-            opacity: 0;
-            transform: translateY(12px);
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .postcode-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
         .success-message {
-            animation: fadeIn 0.4s ease forwards;
+            animation: fadeIn 0.3s ease forwards;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900">
-    <div class="max-w-md mx-auto bg-white min-h-screen flex flex-col">
+<body>
+    <div class="max-w-md mx-auto min-h-screen flex flex-col p-4">
+
         <!-- Header -->
-        <div class="bg-black text-white px-6 py-10 text-center">
-            <div class="flex justify-center items-center gap-x-3">
-                <div class="w-11 h-11 bg-white text-black rounded-3xl flex items-center justify-center text-4xl font-bold leading-none">S</div>
-                <div>
-                    <h1 class="text-3xl font-semibold tracking-tighter">Southampton Weekend Floor Crew</h1>
-                    <p class="text-xs tracking-[1px] text-zinc-400 mt-1">PILOT REGISTRATION</p>
-                </div>
+        <div class="glass-card rounded-3xl shadow p-6 mb-4">
+            <div class="bg-black text-white p-5 rounded-2xl mb-5">
+                <h1 class="text-xl font-semibold">Southampton Weekend Floor Crew</h1>
+                <p class="text-xs text-zinc-400 mt-1 tracking-wider">PILOT REGISTRATION</p>
+            </div>
+
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p class="font-semibold text-base text-black">
+                    Get paid the same day working short bar shifts in Southampton.
+                </p>
+
+                <p>
+                    We’re building a local talent pool for shifts starting over the next few weeks.
+                </p>
+
+                <p>
+                    You stay at home, receive live shift requests, and choose whether to accept them.
+                </p>
+
+                <p>
+                    Work is simple — collecting glasses, clearing tables and helping keep the bar flowing during busy periods.
+                </p>
+
+                <p class="font-medium text-black">
+                    Register below to be considered.
+                </p>
             </div>
         </div>
 
-        <div class="flex-1 px-6 pt-8 pb-12 overflow-auto">
-            <!-- Overview Content -->
-            <div class="space-y-12 text-[15px]">
+        <!-- Form -->
+        <div class="glass-card rounded-3xl shadow p-6">
+            <form id="application-form" class="space-y-5">
+
+                <!-- Name -->
                 <div>
-                    <h2 class="text-3xl font-semibold mb-6">Who we are</h2>
-                    <p class="leading-relaxed">We are running a Southampton pilot for a short notice shift system that connects local workers with nearby venues when they need extra support during busy periods.</p>
-                    <p class="leading-relaxed mt-4">The work is simple floor support in busy bars, including collecting glasses, clearing tables and keeping areas tidy.</p>
-                    <p class="leading-relaxed mt-4">Shifts are a minimum of two hours and paid at least minimum wage, with venues often offering higher pay for urgent support.</p>
-                    <p class="leading-relaxed mt-4">All shifts are paid directly by the venue at the end of the shift and will always be located within a maximum 20 minute walk from your postcode.</p>
+                    <label class="text-sm font-medium mb-1 block">Full Name *</label>
+                    <input id="name" type="text" required class="form-input w-full px-4 py-3 border rounded-xl">
                 </div>
+
+                <!-- Phone -->
                 <div>
-                    <h2 class="text-3xl font-semibold mb-6">How the trial works</h2>
-                    <p class="leading-relaxed">The pilot will be on Zoom - you will be logged into a Zoom call from 8pm to 11pm while at home or nearby. Your microphone and camera do not need to be on.</p>
-                    <p class="leading-relaxed mt-4">You can be doing your own thing, but you must stay logged in, responsive and ready to leave if you accept a shift.</p>
-                    <p class="leading-relaxed mt-4">You are always free to accept or ignore shift requests — you are in control of whether you take a shift.</p>
-                    <p class="leading-relaxed mt-4">You must be dressed in standard black bar shift clothing and ready to leave your home immediately if you accept a shift.</p>
+                    <label class="text-sm font-medium mb-1 block">Mobile Number *</label>
+                    <input id="phone" type="tel" required class="form-input w-full px-4 py-3 border rounded-xl">
+                    <p class="text-xs text-zinc-500 mt-1">WhatsApp required</p>
                 </div>
+
+                <!-- Email -->
                 <div>
-                    <h2 class="text-3xl font-semibold mb-6">How shifts are assigned</h2>
-                    <p class="leading-relaxed">When a venue requests support, a message will be posted in the Zoom chat.</p>
-                    <p class="leading-relaxed mt-4">The first person to reply “YES – READY” gets the shift.</p>
+                    <label class="text-sm font-medium mb-1 block">Email Address *</label>
+                    <input id="email" type="email" required class="form-input w-full px-4 py-3 border rounded-xl">
                 </div>
+
+                <!-- Postcode -->
                 <div>
-                    <h2 class="text-3xl font-semibold mb-6">Prize draw</h2>
-                    <p class="leading-relaxed">All registrations will be entered into a £50 cash draw.</p>
-                    <p class="leading-relaxed mt-4">Crew members who attend the full trial evenings (remaining logged in and responsive for both trial shifts) will be entered into an additional £100 prize draw.</p>
-                    <p class="leading-relaxed mt-4">Winners will be announced after the pilot concludes.</p>
-                    <p class="leading-relaxed mt-4">We need a certain number of registrations to start the pilot - You will receive the pilot date and Zoom invite by email.</p>
+                    <label class="text-sm font-medium mb-1 block">Full Postcode *</label>
+                    <input id="postcode_full" type="text" required class="form-input w-full px-4 py-3 border rounded-xl uppercase" placeholder="SO14 1AB">
+                    <p class="text-xs text-zinc-500 mt-1">Used to ensure shifts are nearby</p>
                 </div>
-            </div>
 
-            <!-- Form Card -->
-            <div class="mt-16 bg-white border border-zinc-100 rounded-3xl shadow-xl p-8">
-                <form id="application-form" class="space-y-9">
-                    <!-- Full Name -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-2">Full Name <span class="text-red-500">*</span></label>
-                        <input id="name" type="text" required class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base">
-                    </div>
+                <!-- Referred by -->
+                <div>
+                    <label class="text-sm font-medium mb-1 block">Referred by (optional)</label>
+                    <input id="referred_by" type="text" class="form-input w-full px-4 py-3 border rounded-xl">
+                </div>
 
-                    <!-- Mobile Number -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-2">Mobile Number <span class="text-red-500">*</span></label>
-                        <input id="phone" type="tel" required class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base">
-                        <p class="text-xs text-zinc-500 mt-2">(WhatsApp required - this is how we contact you if selected)</p>
-                    </div>
+                <!-- GDPR Notice -->
+                <div class="text-xs text-zinc-500 leading-relaxed pt-2">
+                    Your details will only be used to contact you about onboarding and this trial. They’ll be stored securely and handled in line with UK GDPR.
+                </div>
 
-                    <!-- Email Address -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-2">Email Address <span class="text-red-500">*</span></label>
-                        <input id="email" type="email" required class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base">
-                        <p class="text-xs text-zinc-500 mt-2">(This email must be the same as the one you use for Zoom)</p>
-                    </div>
+                <!-- Submit -->
+                <button id="submit-btn" type="submit" class="submit-btn w-full bg-black text-white py-4 rounded-xl font-semibold mt-2">
+                    Register Interest
+                </button>
 
-                    <!-- Age -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-3">Age <span class="text-red-500">*</span></label>
-                        <div class="grid grid-cols-3 gap-3">
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center justify-center cursor-pointer">
-                                <input type="radio" name="age_group" value="18-20" class="hidden peer" required>
-                                <span class="peer-checked:font-semibold text-base">18-20</span>
-                            </label>
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center justify-center cursor-pointer">
-                                <input type="radio" name="age_group" value="21-24" class="hidden peer">
-                                <span class="peer-checked:font-semibold text-base">21-24</span>
-                            </label>
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center justify-center cursor-pointer">
-                                <input type="radio" name="age_group" value="25+" class="hidden peer">
-                                <span class="peer-checked:font-semibold text-base">25+</span>
-                            </label>
-                        </div>
-                    </div>
+            </form>
 
-                    <!-- Clothing check -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-3">
-                            <span class="font-bold">Clothing check</span><br>
-                            Do you own appropriate black clothing for bar shifts? (Top, Jeans, Suitable Shoes) <span class="text-red-500">*</span>
-                        </label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="has_black_clothing" value="Yes" class="accent-black" required>
-                                <span>Yes</span>
-                            </label>
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="has_black_clothing" value="No" class="accent-black">
-                                <span>No</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Physical Ability -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-3">
-                            <span class="font-bold">Physical Ability</span><br>
-                            Are you physically able to be on your feet for 2-3 hours? <span class="text-red-500">*</span>
-                        </label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="physically_able" value="Yes" class="accent-black" required>
-                                <span>Yes</span>
-                            </label>
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="physically_able" value="No" class="accent-black">
-                                <span>No</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- English Speaking -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-3">
-                            <span class="font-bold">English Speaking</span><br>
-                            Is English your first language/are you confident speaking and understanding English in a fast paced environment? <span class="text-red-500">*</span>
-                        </label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="speaks_english" value="Yes" class="accent-black" required>
-                                <span>Yes</span>
-                            </label>
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="speaks_english" value="No" class="accent-black">
-                                <span>No</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Understanding -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-3">
-                            <span class="font-bold">Understanding</span><br>
-                            I understand this is a Zoom based trial with the possibility of being selected for 2-3 hours of paid, light bar work, per trial evening. <span class="text-red-500">*</span>
-                        </label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="understands_trial" value="I understand" class="accent-black" required>
-                                <span>I understand</span>
-                            </label>
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="understands_trial" value="I do not understand" class="accent-black">
-                                <span>I do not understand</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Reliability -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-2">
-                            <span class="font-bold">Reliability</span><br>
-                            Briefly describe any previous work experience and why you’d be reliable for short-notice shifts. <span class="text-red-500">*</span>
-                        </label>
-                        <textarea id="reliability_notes" rows="4" required class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base resize-y min-h-[120px]"></textarea>
-                    </div>
-
-                    <!-- Work Standards -->
-                    <div>
-                        <label class="block text-sm font-medium text-zinc-600 mb-3">
-                            <span class="font-bold">Work Standards</span><br>
-                            If you accept a shift, you are representing Crew Dispatch and we only want polite, nice people representing us.<br>
-                            If you are one of those people, please show you understand below.<br>
-                            The next and last section is a postcode sorter to ensure you are never more than 20 minutes away from paid work. <span class="text-red-500">*</span>
-                        </label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="agrees_work_standard" value="I understand and agree" class="accent-black" required>
-                                <span>I understand and agree</span>
-                            </label>
-                            <label class="radio-card border border-zinc-300 rounded-3xl p-5 flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="agrees_work_standard" value="I do not agree" class="accent-black">
-                                <span>I do not agree</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- POSTCODE SORTER -->
-                    <div class="pt-4">
-                        <h3 class="font-semibold text-xl mb-5">POSTCODE SORTER</h3>
-                        <label class="block text-sm font-medium text-zinc-600 mb-3">Which area do you currently live in? <span class="text-red-500">*</span></label>
-                        <div class="space-y-3">
-                            <label class="flex items-center gap-3 border border-zinc-300 hover:border-black rounded-3xl px-6 py-5 cursor-pointer transition-all">
-                                <input type="radio" name="area" value="City Centre West ( Bedford Place area )" class="w-5 h-5 accent-black" required>
-                                <span class="text-base">City Centre West ( Bedford Place area )</span>
-                            </label>
-                            <label class="flex items-center gap-3 border border-zinc-300 hover:border-black rounded-3xl px-6 py-5 cursor-pointer transition-all">
-                                <input type="radio" name="area" value="City Centre East ( Ocean Village area )" class="w-5 h-5 accent-black">
-                                <span class="text-base">City Centre East ( Ocean Village area )</span>
-                            </label>
-                            <label class="flex items-center gap-3 border border-zinc-300 hover:border-black rounded-3xl px-6 py-5 cursor-pointer transition-all">
-                                <input type="radio" name="area" value="Portswood / Highfield / Southampton Uni" class="w-5 h-5 accent-black">
-                                <span class="text-base">Portswood / Highfield / Southampton Uni</span>
-                            </label>
-                        </div>
-
-                        <!-- WEST POSTCODE -->
-                        <div id="west-postcode" class="postcode-section hidden mt-10">
-                            <div class="bg-zinc-50 border border-zinc-200 rounded-3xl p-7">
-                                <h4 class="font-medium mb-5">City Centre West - Postcode Check</h4>
-                                <p class="text-xs text-zinc-500 mb-4">This is only used to make sure you’re close enough to participating venues.</p>
-                                <div class="space-y-1">
-                                    <label class="block text-sm font-medium">Select your postcode sector.</label>
-                                    <p class="text-xs text-zinc-500">This is only used to make sure you’re close enough to participating venues.</p>
-                                    <select id="west-sector" class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base">
-                                        <option value="">Select...</option>
-                                        <option value="SO15 1">SO15 1</option>
-                                        <option value="SO15 2">SO15 2</option>
-                                        <option value="SO15 3">SO15 3</option>
-                                        <option value="SO14 1">SO14 1</option>
-                                        <option value="SO14 2">SO14 2</option>
-                                    </select>
-                                </div>
-                                <div class="mt-7">
-                                    <label class="block text-sm font-medium mb-2">Enter the last 3 characters of your postcode (e.g. 4AB) <span class="text-red-500">*</span></label>
-                                    <input id="west-last3" type="text" maxlength="3" class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base uppercase tracking-widest" placeholder="e.g. 4AB">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- EAST POSTCODE -->
-                        <div id="east-postcode" class="postcode-section hidden mt-10">
-                            <div class="bg-zinc-50 border border-zinc-200 rounded-3xl p-7">
-                                <h4 class="font-medium mb-5">City Centre East - Postcode Check</h4>
-                                <p class="text-xs text-zinc-500 mb-4">This is only used to make sure you’re close enough to participating venues.</p>
-                                <div class="space-y-1">
-                                    <label class="block text-sm font-medium">Select your postcode sector</label>
-                                    <p class="text-xs text-zinc-500">This is used to confirm eligibility</p>
-                                    <select id="east-sector" class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base">
-                                        <option value="">Select...</option>
-                                        <option value="SO14 0">SO14 0</option>
-                                        <option value="SO14 1">SO14 1</option>
-                                        <option value="SO14 2">SO14 2</option>
-                                        <option value="SO14 3">SO14 3</option>
-                                    </select>
-                                </div>
-                                <div class="mt-7">
-                                    <label class="block text-sm font-medium mb-2">Enter the last 3 characters of your postcode (e.g. 4AB) <span class="text-red-500">*</span></label>
-                                    <input id="east-last3" type="text" maxlength="3" class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base uppercase tracking-widest" placeholder="e.g. 4AB">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PORTSWOOD POSTCODE -->
-                        <div id="portswood-postcode" class="postcode-section hidden mt-10">
-                            <div class="bg-zinc-50 border border-zinc-200 rounded-3xl p-7">
-                                <h4 class="font-medium mb-5">Portswood / Highfield / Universtity postcode check</h4>
-                                <p class="text-xs text-zinc-500 mb-4">This is only used to make sure you’re close enough to participating venues.</p>
-                                <div class="space-y-1">
-                                    <label class="block text-sm font-medium">Select your postcode sector</label>
-                                    <select id="portswood-sector" class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base">
-                                        <option value="">Select...</option>
-                                        <option value="SO17 1">SO17 1</option>
-                                        <option value="SO17 2">SO17 2</option>
-                                        <option value="SO17 3">SO17 3</option>
-                                        <option value="SO17 4">SO17 4</option>
-                                        <option value="SO17 5">SO17 5</option>
-                                    </select>
-                                </div>
-                                <div class="mt-7">
-                                    <label class="block text-sm font-medium mb-2">Enter the last 3 characters of your postcode (e.g. 4AB) <span class="text-red-500">*</span></label>
-                                    <input id="portswood-last3" type="text" maxlength="3" class="form-input w-full px-5 py-4 border border-zinc-300 rounded-3xl text-base uppercase tracking-widest" placeholder="e.g. 4AB">
-                                </div>
-                                <p class="text-xs text-zinc-500 mt-4">This is only used to make sure you’re close enough to participating venues.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="pt-4">
-                        <button id="submit-btn" type="submit"
-                            class="w-full bg-black hover:bg-zinc-900 active:bg-black transition-all text-white font-semibold py-6 rounded-3xl text-base shadow-inner">
-                            Submit Application
-                        </button>
-                    </div>
-                </form>
-
-                <!-- Feedback -->
-                <div id="feedback" class="mt-6 text-center"></div>
-            </div>
+            <!-- Feedback -->
+            <div id="feedback" class="mt-4 text-center"></div>
         </div>
 
-        <!-- Subtle footer -->
-        <div class="text-center py-6 text-[10px] text-zinc-400 tracking-widest">
+        <div class="text-center text-[10px] text-zinc-400 mt-4 tracking-widest">
             POWERED BY CREW DISPATCH • CONFIDENTIAL
         </div>
+
     </div>
 
-    <script>
-        // Supabase constants
-        const SUPABASE_URL = "https://hweytbyrqvjsviydmacv.supabase.co";
-        const SUPABASE_ANON_KEY = "sb_publishable_Qt-BL3-Qyb1cEBJ1ScDYSw_kNdxfYXs";
+<script>
+const SUPABASE_URL = "https://hweytbyrqvjsviydmacv.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Qt-BL3-Qyb1cEBJ1ScDYSw_kNdxfYXs";
 
-        // DOM elements
-        const form = document.getElementById('application-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const feedback = document.getElementById('feedback');
+const form = document.getElementById('application-form');
+const submitBtn = document.getElementById('submit-btn');
+const feedback = document.getElementById('feedback');
 
-        const westSection = document.getElementById('west-postcode');
-        const eastSection = document.getElementById('east-postcode');
-        const portswoodSection = document.getElementById('portswood-postcode');
-
-        const westSectorSelect = document.getElementById('west-sector');
-        const westLast3Input = document.getElementById('west-last3');
-        const eastSectorSelect = document.getElementById('east-sector');
-        const eastLast3Input = document.getElementById('east-last3');
-        const portswoodSectorSelect = document.getElementById('portswood-sector');
-        const portswoodLast3Input = document.getElementById('portswood-last3');
-
-        // Area radio listeners
-        function setupAreaListeners() {
-            const areaInputs = document.querySelectorAll('input[name="area"]');
-            areaInputs.forEach(input => {
-                input.addEventListener('change', () => {
-                    hideAllPostcodeSections();
-                    if (input.value === 'City Centre West ( Bedford Place area )') {
-                        westSection.classList.remove('hidden');
-                        setTimeout(() => westSection.classList.add('show'), 10);
-                        westSectorSelect.required = true;
-                        westLast3Input.required = true;
-                    } else if (input.value === 'City Centre East ( Ocean Village area )') {
-                        eastSection.classList.remove('hidden');
-                        setTimeout(() => eastSection.classList.add('show'), 10);
-                        eastSectorSelect.required = true;
-                        eastLast3Input.required = true;
-                    } else if (input.value === 'Portswood / Highfield / Southampton Uni') {
-                        portswoodSection.classList.remove('hidden');
-                        setTimeout(() => portswoodSection.classList.add('show'), 10);
-                        portswoodSectorSelect.required = true;
-                        portswoodLast3Input.required = true;
-                    }
-                });
-            });
-        }
-
-        function hideAllPostcodeSections() {
-            westSection.classList.add('hidden');
-            eastSection.classList.add('hidden');
-            portswoodSection.classList.add('hidden');
-            westSection.classList.remove('show');
-            eastSection.classList.remove('show');
-            portswoodSection.classList.remove('show');
-
-            westSectorSelect.required = false;
-            westLast3Input.required = false;
-            eastSectorSelect.required = false;
-            eastLast3Input.required = false;
-            portswoodSectorSelect.required = false;
-            portswoodLast3Input.required = false;
-        }
-
-        // Form submit handler
-        async function handleSubmit(e) {
-            e.preventDefault();
-
-            // Basic HTML5 validation
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `
-                <span class="flex items-center justify-center gap-x-2">
-                    <span class="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full"></span>
-                    Submitting...
-                </span>
-            `;
-            feedback.innerHTML = '';
-
-            // Gather form values
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const age_group = document.querySelector('input[name="age_group"]:checked').value;
-            const has_black_clothing = document.querySelector('input[name="has_black_clothing"]:checked').value === 'Yes';
-            const physically_able = document.querySelector('input[name="physically_able"]:checked').value === 'Yes';
-            const speaks_english = document.querySelector('input[name="speaks_english"]:checked').value === 'Yes';
-            const understands_trial = document.querySelector('input[name="understands_trial"]:checked').value === 'I understand';
-            const reliability_notes = document.getElementById('reliability_notes').value.trim();
-            const agrees_work_standard = document.querySelector('input[name="agrees_work_standard"]:checked').value === 'I understand and agree';
-
-            // Area
-            const areaInput = document.querySelector('input[name="area"]:checked');
-            const area = areaInput ? areaInput.value : '';
-
-            // Postcode values (only from visible section)
-            let postcode_sector = '';
-            let postcode_last3 = '';
-            if (!westSection.classList.contains('hidden')) {
-                postcode_sector = westSectorSelect.value;
-                postcode_last3 = westLast3Input.value.trim().toUpperCase();
-            } else if (!eastSection.classList.contains('hidden')) {
-                postcode_sector = eastSectorSelect.value;
-                postcode_last3 = eastLast3Input.value.trim().toUpperCase();
-            } else if (!portswoodSection.classList.contains('hidden')) {
-                postcode_sector = portswoodSectorSelect.value;
-                postcode_last3 = portswoodLast3Input.value.trim().toUpperCase();
-            }
-
-            const payload = {
-                name: name,
-                phone: phone,
-                email: email,
-                age_group: age_group,
-                has_black_clothing: has_black_clothing,
-                physically_able: physically_able,
-                speaks_english: speaks_english,
-                understands_trial: understands_trial,
-                reliability_notes: reliability_notes,
-                agrees_work_standard: agrees_work_standard,
-                area: area,
-                postcode_sector: postcode_sector,
-                postcode_last3: postcode_last3
-            };
-
-            try {
-                const res = await fetch(`${SUPABASE_URL}/rest/v1/applications`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!res.ok) {
-    const errorText = await res.text();
-    console.error("Supabase error:", errorText);
-    throw new Error(errorText);
+function formatPostcode(pc) {
+    pc = pc.toUpperCase().replace(/\s+/g, '');
+    if (pc.length > 3) {
+        return pc.slice(0, -3) + ' ' + pc.slice(-3);
+    }
+    return pc;
 }
 
-                // Success
-                feedback.innerHTML = `
-                    <div class="success-message bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-3xl p-6 text-center">
-                        <div class="text-3xl mb-2">✅</div>
-                        <p class="font-medium">Thank you! Your application has been received.</p>
-                        <p class="text-xs text-emerald-700 mt-2">You will receive the pilot date and Zoom invite by email shortly.</p>
-                    </div>
-                `;
-                form.reset();
-                hideAllPostcodeSections();
-            } catch (err) {
-                feedback.innerHTML = `
-                    <div class="bg-red-50 border border-red-200 text-red-700 rounded-3xl p-6 text-center text-sm font-medium">
-                        Submission failed. Please check your connection and try again.
-                    </div>
-                `;
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Application';
-            }
-        }
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        // Initialize everything
-        function initialize() {
-            setupAreaListeners();
-            form.addEventListener('submit', handleSubmit);
-        }
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const postcode = formatPostcode(document.getElementById('postcode_full').value.trim());
+    const referredBy = document.getElementById('referred_by').value.trim();
 
-        window.onload = initialize;
-    </script>
+    if (!name || !phone || !email || !postcode) {
+        feedback.innerHTML = `<div class="text-red-600 text-sm">Please complete all required fields.</div>`;
+        return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    const payload = {
+        name: name,
+        phone: phone,
+        email: email,
+        postcode_full: postcode,
+        referred_by: referredBy || null
+    };
+
+    try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/applications`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error();
+
+        feedback.innerHTML = `
+            <div class="success-message text-green-600 text-sm">
+                ✅ You're in. We'll be in touch with next steps.
+            </div>
+        `;
+
+        form.reset();
+
+    } catch {
+        feedback.innerHTML = `<div class="text-red-600 text-sm">Something went wrong. Try again.</div>`;
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Register Interest";
+});
+</script>
+
 </body>
 </html>
